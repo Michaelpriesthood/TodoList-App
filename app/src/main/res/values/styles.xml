@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Styles For TextViews-->
+    <style name="CustomText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="fontFamily">@font/lobster_two</item>
+    </style>
+
+    <!--    Inheriting and Extending from Widget.MaterialComponents.Button.TextButton-->
+    <style name="Widget.TodoListComponents.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="fontFamily">@font/lobster_two</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!--    Increase the font of the Appbar title-->
+    <style name="FontIncrease" parent="CustomText">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="EditTextFontSize" parent="CustomText">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <!--    Inheriting and Extending from Widget.MaterialComponents.TextInputLayout.OutlinedBox-->
+    <style name="Widget.TodoListComponents.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/boxCornerRadius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/boxCornerRadius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/boxCornerRadius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/boxCornerRadius</item>
+    </style>
+
+
+</resources>
+
