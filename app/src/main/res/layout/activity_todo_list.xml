@@ -33,33 +33,23 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/blue_design"
+        app:layout_constraintBottom_toTopOf="@+id/fab_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar_layout" />
-
-    <View
-        android:id="@+id/blue_design"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:background="@drawable/blue_design"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/blue_secondary"
         android:contentDescription="@string/add_task_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/blue_design"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/blue_design"
-        app:layout_constraintTop_toTopOf="@+id/blue_design"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_add_btn"
-        app:tint="@color/blue_secondary"
-        tools:ignore="VectorDrawableCompat"
+
         tools:targetApi="lollipop" />
 
 
