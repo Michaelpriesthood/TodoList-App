@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.techmedia.todolistapp.adapter.TodoAdapter
 import com.techmedia.todolistapp.databinding.ActivityTodoListBinding
+import com.techmedia.todolistapp.model.Todo
 
 class TodoListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTodoListBinding
@@ -31,20 +32,27 @@ class TodoListActivity : AppCompatActivity() {
         binding.todoRecyclerView.layoutManager = LinearLayoutManager(this)
 
         /**
-         * For the toolbar menu
-         */
-        setSupportActionBar(binding.toolbar)
-
-        /**
-         * Add a click event on the button to navigate to the next activity.
+         * Adding a click listener on my button
          */
         binding.fabAdd.setOnClickListener {
-            Intent(this, AddTodoActivity::class.java).also {
-                startActivity(it)
+            /**
+             * Assign the editText to a variable and convert it to a String
+             * And Check to see if the todoTitle have any value
+             */
+            val todoTitle = binding.addTodoEditText.text.toString()
+
+            if (todoTitle.isNotEmpty()) {
+                val todo = Todo(todoTitle)
+                todoAdapter.addTodoItem(todo)
+                binding.addTodoEditText.text?.clear()
             }
         }
 
-        val display = intent.getStringExtra("todo_KEY")
+
+        /**
+         * For the toolbar menu
+         */
+        setSupportActionBar(binding.toolbar)
     }
 
     /**
@@ -54,7 +62,5 @@ class TodoListActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
-
-
 }
 

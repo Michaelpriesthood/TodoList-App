@@ -5,10 +5,9 @@
     <string name="todo_photo">todo_image</string>
     <string name="search">Search</string>
     <string name="delete">Delete</string>
-    <string name="page_title">Your Tasks</string>
+    <string name="page_title">Your Task</string>
     <string name="content_description_search">search your tasks</string>
-    <string name="content_description_delete">delete your tasks</string>
     <string name="add_task_btn">add your task</string>
-    <string name="label">Add task</string>
+    <string name="label">Add a new task</string>
     <string name="check_mark_btn">check</string>
 </resources>

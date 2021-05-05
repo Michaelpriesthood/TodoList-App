@@ -48,19 +48,19 @@ class TodoAdapter(
         notifyItemInserted(todos.size - 1)
     }
 
+
     /**
      * function for Deleting todo items
      */
     fun deleteTodoItem(){
-        todos.removeAll{ todo ->
-            todo.isChecked
-        }
+        todos.remove(todos)
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         val currentTodo = todos[position]
         holder.itemViewBinding.apply {
+
             todoTitle.text = currentTodo.title
             todoDone.isChecked = currentTodo.isChecked
             toggleStrikeThrough(todoTitle, currentTodo.isChecked)
@@ -70,6 +70,12 @@ class TodoAdapter(
             todoDone.setOnCheckedChangeListener { _, isChecked ->
                 toggleStrikeThrough(todoTitle, isChecked)
                 currentTodo.isChecked = !currentTodo.isChecked
+            }
+            /**
+             * calls the deleteTodoItem function when the image icon is clicked
+             */
+            deleteTodo.setOnClickListener{
+                deleteTodoItem()
             }
         }
 
