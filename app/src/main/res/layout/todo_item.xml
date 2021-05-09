@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:layout_marginBottom="-20dp"
+    android:layout_height="110dp"
+    android:layout_marginBottom="-40dp"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="50dp"
     app:cardElevation="8dp"
     app:cardUseCompatPadding="true">
 
@@ -28,12 +28,13 @@
         <CheckBox
             android:id="@+id/todo_done"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:buttonTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/blue_container"
             app:layout_constraintEnd_toEndOf="@+id/blue_container"
+            app:layout_constraintHorizontal_bias="0.781"
             app:layout_constraintStart_toStartOf="@+id/blue_container"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/blue_container"
             tools:targetApi="lollipop" />
 
         <TextView
@@ -49,18 +50,6 @@
             app:layout_constraintStart_toEndOf="@+id/blue_container"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/delete_todo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:accessibilityPaneTitle="delete"
-            android:contentDescription="@string/delete"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_trash"
-            tools:targetApi="p" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

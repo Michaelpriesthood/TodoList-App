@@ -10,21 +10,27 @@ import com.techmedia.todolistapp.databinding.TodoItemBinding
 import com.techmedia.todolistapp.model.Todo
 
 class TodoAdapter(
-        private val todos: MutableList<Todo>
+    private val todos: MutableList<Todo>
 ) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
 
     /**
      * Using viewBinding
      */
-    class TodoViewHolder(val itemViewBinding: TodoItemBinding) : RecyclerView.ViewHolder(itemViewBinding.root)
+    class TodoViewHolder(val itemViewBinding: TodoItemBinding) :
+        RecyclerView.ViewHolder(itemViewBinding.root)
 
     /**
      * Create new views (invoked by the layout manager)
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
-        return TodoViewHolder(TodoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return TodoViewHolder(
+            TodoItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
-
 
     /**
      * Strike Through the textView if toggle and vise versa
@@ -52,8 +58,11 @@ class TodoAdapter(
     /**
      * function for Deleting todo items
      */
-    fun deleteTodoItem(){
-        todos.remove(todos)
+    fun deleteTodoItem() {
+        todos.removeAll { todo ->
+            todo.isChecked
+
+        }
         notifyDataSetChanged()
     }
 
@@ -71,12 +80,7 @@ class TodoAdapter(
                 toggleStrikeThrough(todoTitle, isChecked)
                 currentTodo.isChecked = !currentTodo.isChecked
             }
-            /**
-             * calls the deleteTodoItem function when the image icon is clicked
-             */
-            deleteTodo.setOnClickListener{
-                deleteTodoItem()
-            }
+
         }
 
     }

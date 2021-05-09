@@ -7,7 +7,17 @@
         android:id="@+id/search"
         android:icon="@drawable/ic_search"
         android:title="@string/search"
-        app:actionViewClass="android.widget.SearchView"
+
         android:contentDescription="@string/content_description_search"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"
+/>
+
+    <item android:id="@+id/delete_todo"
+        android:title="@string/delete_done_todo"
+        app:showAsAction="never"
+        android:contentDescription="@string/delete_your_todo"
+        />
+
+
+
 </menu>
