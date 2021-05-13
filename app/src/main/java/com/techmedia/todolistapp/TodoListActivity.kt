@@ -3,6 +3,7 @@ package com.techmedia.todolistapp
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.techmedia.todolistapp.adapter.TodoAdapter
@@ -64,6 +65,24 @@ class TodoListActivity : AppCompatActivity() {
      */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
+
+        /**
+         *   Search feature
+         */
+        val search  = menu?.findItem(R.id.search)
+        val searchView = search?.actionView as SearchView
+        searchView.queryHint = "Search Task"
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+        })
+
         return true
     }
 

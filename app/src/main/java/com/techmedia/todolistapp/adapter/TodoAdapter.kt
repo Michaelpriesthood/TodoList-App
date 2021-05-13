@@ -55,6 +55,7 @@ class TodoAdapter(
     }
 
 
+
     /**
      * function for Deleting todo items
      */
@@ -91,6 +92,7 @@ class TodoAdapter(
     override fun getItemCount(): Int {
         return todos.size
     }
+
 
 }
 

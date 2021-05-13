@@ -5,19 +5,17 @@
 
     <item
         android:id="@+id/search"
+        android:contentDescription="@string/content_description_search"
         android:icon="@drawable/ic_search"
         android:title="@string/search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom|withText" />
 
-        android:contentDescription="@string/content_description_search"
-        app:showAsAction="ifRoom"
-/>
-
-    <item android:id="@+id/delete_todo"
-        android:title="@string/delete_done_todo"
-        app:showAsAction="never"
+    <item
+        android:id="@+id/delete_todo"
         android:contentDescription="@string/delete_your_todo"
-        />
-
+        android:title="@string/delete_done_todo"
+        app:showAsAction="never" />
 
 
 </menu>
