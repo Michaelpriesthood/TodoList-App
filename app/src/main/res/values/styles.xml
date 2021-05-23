@@ -5,7 +5,7 @@
     <style name="CustomText" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/textSize</item>
-        <item name="fontFamily">@font/lobster_two</item>
+        <item name="fontFamily">@font/amaranth</item>
     </style>
 
 
@@ -17,6 +17,10 @@
         <item name="boxCornerRadiusBottomStart">@dimen/boxCornerRadius</item>
     </style>
 
-
+    <!--For the Update Dialogue-->
+    <style name="ThemeDialog" parent="ThemeOverlay.AppCompat.Dialog">
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
 </resources>
 

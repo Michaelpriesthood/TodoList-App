@@ -1,17 +1,18 @@
 package com.techmedia.todolistapp.adapter
 
 
+import android.content.Context
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.techmedia.todolistapp.TodoListActivity
 import com.techmedia.todolistapp.databinding.TodoItemBinding
-import com.techmedia.todolistapp.model.Todo
+import com.techmedia.todolistapp.model.TodoModel
 
-class TodoAdapter(
-    private val todos: MutableList<Todo>
-) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
+class TodoAdapter(private val context: Context, private val todos: ArrayList<TodoModel>) :
+    RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
 
     /**
      * Using viewBinding
@@ -20,8 +21,10 @@ class TodoAdapter(
         RecyclerView.ViewHolder(itemViewBinding.root)
 
     /**
-     * Create new views (invoked by the layout manager)
-     */
+     * Inflates the todo item views which is designed in the XML layout file
+     **/
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         return TodoViewHolder(
             TodoItemBinding.inflate(
@@ -31,6 +34,7 @@ class TodoAdapter(
             )
         )
     }
+
 
     /**
      * Strike Through the textView if toggle and vise versa
@@ -46,48 +50,38 @@ class TodoAdapter(
         }
     }
 
-    /**
-     * function for adding todo items
-     */
-    fun addTodoItem(todo: Todo) {
-        todos.add(todo)
-        notifyItemInserted(todos.size - 1)
-    }
-
-
-
-    /**
-     * function for Deleting todo items
-     */
-    fun deleteTodoItem() {
-        todos.removeAll { todo ->
-            todo.isChecked
-
-        }
-        notifyDataSetChanged()
-    }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
+
         val currentTodo = todos[position]
         holder.itemViewBinding.apply {
-
             todoTitle.text = currentTodo.title
             todoDone.isChecked = currentTodo.isChecked
             toggleStrikeThrough(todoTitle, currentTodo.isChecked)
-            /**
-             * calls the toggleStrikeThrough function when the checkbox is clicked
-             */
+
+//             call the toggleStrikeThrough function when the checkbox is clicked
             todoDone.setOnCheckedChangeListener { _, isChecked ->
                 toggleStrikeThrough(todoTitle, isChecked)
                 currentTodo.isChecked = !currentTodo.isChecked
             }
+            ivEdit.setOnClickListener {
+                if (context is TodoListActivity) {
+                    context.updateTodoDialog(currentTodo)
+                }
+            }
+
+            ivDelete.setOnClickListener {
+                if (context is TodoListActivity) {
+                    context.deleteTodoDialog(currentTodo)
+                }
+            }
 
         }
-
     }
 
+
     /**
-     * Return the size of the Todo
+     * Gets the number of items in the list
      */
     override fun getItemCount(): Int {
         return todos.size

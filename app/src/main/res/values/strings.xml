@@ -4,10 +4,18 @@
     <string name="welcome_message">Organize your day and be productive</string>
     <string name="todo_photo">todo_image</string>
     <string name="search">Search</string>
-    <string name="page_title">Your Task</string>
+    <string name="page_title">Todo-List</string>
     <string name="content_description_search">search your tasks</string>
     <string name="add_task_btn">add your task</string>
     <string name="label">Add a new task</string>
     <string name="delete_done_todo">Delete</string>
     <string name="delete_your_todo">delete your todo</string>
+    <string name="all_the_inserted_tasks">All the inserted Tasks</string>
+    <string name="no_task_available">No Task available!!!</string>
+    <string name="image_delete">image_delete</string>
+    <string name="image_edit">image_edit</string>
+    <string name="update_label">Update task</string>
+    <string name="update_task">Update</string>
+    <string name="cancel_task">Cancel</string>
+    <string name="update_task_message">Update Task</string>
 </resources>

@@ -28,16 +28,46 @@
             app:titleTextAppearance="@style/CustomText" />
     </com.google.android.material.appbar.AppBarLayout>
 
+    <TextView
+        android:id="@+id/inserted_task"
+        style="@style/CustomText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/all_the_inserted_tasks"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar_layout" />
+
 
     <!--    Recyclerview for our todo items-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todo_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/edit_text_layout"
-        app:layout_constraintTop_toBottomOf="@+id/appbar_layout" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inserted_task"
+        tools:listitem="@layout/todo_item"/>
+
+    <TextView
+        android:id="@+id/no_task_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amaranth"
+        android:text="@string/no_task_available"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 
     <!--    Material EditTextView-->
@@ -46,7 +76,9 @@
         style="@style/Widget.TodoListComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_margin="16dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/label"
         app:boxBackgroundColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,7 +98,8 @@
         android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/blue_secondary"
         android:contentDescription="@string/add_task_btn"
         app:layout_constraintBottom_toBottomOf="parent"
