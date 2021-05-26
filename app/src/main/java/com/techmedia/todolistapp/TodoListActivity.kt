@@ -26,20 +26,18 @@ class TodoListActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
 //         Adding a click listener on my button
-        binding.fabAdd.setOnClickListener { addTodo() }
+        binding.fabAdd.setOnClickListener {
+            addTodo()
+        }
 
         setupListOfDataIntoRecyclerView()
-
-
     }
 
     /**
      * Function is used to show the list of inserted data.
      */
     private fun setupListOfDataIntoRecyclerView() {
-
         if (getItemsList().size > 0) {
-
             binding.todoRecyclerView.visibility = View.VISIBLE
             binding.noTaskAvailable.visibility = View.GONE
 
@@ -66,11 +64,11 @@ class TodoListActivity : AppCompatActivity() {
         if (todoEditText.isNotEmpty()) {
             val status = databaseHandler.addTodoItem(TodoModel(0, todoEditText))
             if (status > -1) {
-                Toast.makeText(applicationContext, "Task saved!!!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Task saved!!!", Toast.LENGTH_LONG).show()
                 binding.addTodoEditText.text?.clear()
             }
         } else {
-            binding.addTodoEditText.error = "Your field cannot be blank"
+            binding.addTodoEditText.error = "This field cannot be blank"
             return
         }
         //             Clear the Focus
@@ -83,8 +81,7 @@ class TodoListActivity : AppCompatActivity() {
     private fun getItemsList(): ArrayList<TodoModel> {
         //creating the instance of DatabaseHandler class
         val databaseHandler = DatabaseHandler(this)
-        //calling the viewTodoItem method of DatabaseHandler class to read the records
-
+        //calling the viewTodoItem method of DatabaseHandler class to read the todos
         return databaseHandler.viewTodoItem()
     }
 
@@ -92,39 +89,40 @@ class TodoListActivity : AppCompatActivity() {
     /**
      * Method is used to show the custom update dialog.
      */
+
     fun updateTodoDialog(todoModel: TodoModel) {
-        val updateDialog = AlertDialog.Builder(this, R.style.ThemeDialog)
-        val inflateLayout = LayoutInflater.from(this)
+        val updateDialog = AlertDialog.Builder(this)
+        val layoutInflater = LayoutInflater.from(this)
+        val dialogBinding = DialogUpdateBinding.inflate(layoutInflater)
         /*Set the screen content from a layout resource.
- The resource will be inflated, adding all top-level views to the screen.*/
-        val dialogBinding = DialogUpdateBinding.inflate(inflateLayout)
+         The resource will be inflated, adding all top-level views to the screen.*/
         updateDialog.setView(dialogBinding.root)
         updateDialog.setCancelable(false)
+
         dialogBinding.updateTodoEditText.setText(todoModel.title)
 
-        dialogBinding.updateButton.setOnClickListener {
+        updateDialog.setPositiveButton("Update") { dialogInterface, _ ->
             val updateTask = dialogBinding.updateTodoEditText.text.toString()
             val databaseHandler = DatabaseHandler(this)
             if (updateTask.isNotEmpty()) {
                 val status =
                     databaseHandler.updateTodo(TodoModel(todoModel.id, updateTask))
                 if (status > -1) {
-                    Toast.makeText(applicationContext, "Task Updated.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Task Updated.", Toast.LENGTH_LONG).show()
                     setupListOfDataIntoRecyclerView()
-
+                    dialogInterface.dismiss()
                 }
-
-
             } else {
                 dialogBinding.updateTodoEditText.error = "Your field cannot be blank"
             }
         }
 
-        dialogBinding.cancelButton.setOnClickListener {
-            Toast.makeText(applicationContext, "Task Update dismissed.", Toast.LENGTH_LONG).show()
+        updateDialog.setNegativeButton("Cancel") { dialogInterface, _ ->
+            Toast.makeText(this, "Nothing Changed.", Toast.LENGTH_LONG).show()
+            dialogInterface.dismiss() // Dialog will be dismissed
         }
-        //Start the dialog and display it on screen.
-        updateDialog.show()
+
+        updateDialog.show()  // show the dialog to UI
     }
 
     /**
@@ -140,22 +138,20 @@ class TodoListActivity : AppCompatActivity() {
 
         //performing positive action
         builder.setPositiveButton("Yes") { dialogInterface, _ ->
-
             //creating the instance of DatabaseHandler class
             val databaseHandler = DatabaseHandler(this)
             //calling the deleteTodo method of DatabaseHandler class to delete todo
             val status = databaseHandler.deleteTodo(TodoModel(todoModel.id, ""))
             if (status > -1) {
                 Toast.makeText(
-                    applicationContext,
+                    this,
                     "Task deleted successfully.",
                     Toast.LENGTH_LONG
                 ).show()
 
                 setupListOfDataIntoRecyclerView()
+                dialogInterface.dismiss() // Dialog will be dismissed
             }
-
-            dialogInterface.dismiss() // Dialog will be dismissed
         }
         //performing negative action
         builder.setNegativeButton("No") { dialogInterface, which ->
@@ -168,11 +164,7 @@ class TodoListActivity : AppCompatActivity() {
         alertDialog.show()  // show the dialog to UI
     }
 
-    // Inflate the menu; this adds items to the action bar if it is present.
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
+
 }
 
 

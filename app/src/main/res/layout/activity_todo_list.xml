@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inserted_task"
-        tools:listitem="@layout/todo_item"/>
+        />
 
     <TextView
         android:id="@+id/no_task_available"

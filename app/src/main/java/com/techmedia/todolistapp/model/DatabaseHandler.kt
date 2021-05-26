@@ -14,9 +14,9 @@ class DatabaseHandler(context: Context) :
 
     companion object {
         private const val DATABASE_VERSION = 1
-        private const val DATABASE_NAME = "Todo-List Database"
+        private const val DATABASE_NAME = "TodoList Database"
 
-        private const val TODO_TABLE = "Todo-List Table"
+        private const val TODO_TABLE = "TodoList"
 
         private const val KEY_ID = "_id"
         private const val KEY_TITLE = "title"
@@ -27,7 +27,7 @@ class DatabaseHandler(context: Context) :
         //creating table with fields
         val CREATE_TASK_TABLE = ("CREATE TABLE " + TODO_TABLE + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_TITLE + " TEXT,"
-                + KEY_ISCHECKED + " TEXT" + ")")
+                + KEY_ISCHECKED + " INTEGER " + ")")
         db?.execSQL(CREATE_TASK_TABLE)
 
     }

@@ -38,33 +38,6 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_todo_edit_text_layout"
-        android:layout_marginTop="4dp">
 
-        <TextView
-            android:id="@+id/update_button"
-            style="@style/CustomText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:text="@string/update_task"
-            android:textColor="@color/blue_secondary" />
-
-        <TextView
-            android:id="@+id/cancel_button"
-            style="@style/CustomText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:text="@string/cancel_task"
-            android:textColor="@android:color/holo_red_light" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

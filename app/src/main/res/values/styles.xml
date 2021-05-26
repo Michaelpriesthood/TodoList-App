@@ -17,10 +17,6 @@
         <item name="boxCornerRadiusBottomStart">@dimen/boxCornerRadius</item>
     </style>
 
-    <!--For the Update Dialogue-->
-    <style name="ThemeDialog" parent="ThemeOverlay.AppCompat.Dialog">
-        <item name="android:windowMinWidthMajor">90%</item>
-        <item name="android:windowMinWidthMinor">90%</item>
-    </style>
+
 </resources>
 

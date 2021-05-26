@@ -23,8 +23,6 @@ class TodoAdapter(private val context: Context, private val todos: ArrayList<Tod
     /**
      * Inflates the todo item views which is designed in the XML layout file
      **/
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         return TodoViewHolder(
             TodoItemBinding.inflate(
